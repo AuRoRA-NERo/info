@@ -39,22 +39,23 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 /* style of all pages */
-body {
+body{
     display: flex;
 }
-
 hr {
     left: 5%;
-    position: absolute;
     background-color: var(--gray-border);
-    width: 85%;
+    width: 95%;
     height: 1px;
     border: 0;
 }
 
 .side-panel {
+    position: fixed;
+    left: 0;
+    top: 0;
     background-color: var(--gray-background);
-    width: 45%;
+    width: 32%;
     height: 100vh;
 }
 
@@ -72,9 +73,10 @@ hr {
 }
 
 .content {
+    width: 100%;
     background-color: var(--white);
     height: 100vh;
-    width: 100%;
+    margin-left: 32%;
 }
 
 .header-content {
@@ -116,85 +118,14 @@ input:focus {
     font-family: var(--font);
     color: var(--black-link);
     font-size: 14px;
-    margin-top: 10px;
-    margin-right: 6em;
+    margin-top: 15px;
+    margin-left: 8em;
     text-decoration: none;
 }
 
 .link:hover {
     color: var(--red-link);
 }
-
-/* .switch {
-    position: relative;
-    display: inline-block;
-    width: 90px;
-    height: 40px;
-}
-
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-.slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: transparent;
-    -webkit-transition: .4s;
-    transition: .4s;
-}
-
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 100%;
-    width: 50%;
-    background-color: var(--gray-button);
-    -webkit-transition: .4s;
-    transition: .4s;
-}
-
-input:checked+.slider:before {
-    -webkit-transform: translateX(45px);
-    -ms-transform: translateX(45px);
-    transform: translateX(45px);
-}
-
-.switch input:checked + .slider #en {
-    -webkit-transition: .4s;
-    transition: .4s;
-    color: var(--gray-line);
-}
-
-.switch input:checked + .slider #br {
-    -webkit-transition: .4s;
-    transition: .4s;
-    color: var(--white);
-}
-
-.text-button {
-    position: absolute;
-    font-family: var(--font);
-}
-
-#en {
-    color: var(--white);
-    top: 12px;
-    left: 12px;
-}
-
-#br {
-    color: var(--gray-line);
-    top: 12px;
-    left: 57px;
-} 
-*/
 
 .nav-bar {
     margin-top: 5em;
@@ -237,7 +168,7 @@ footer {
     bottom: 0;
     text-align: center;
     margin-bottom: 14px;
-    width: 31%;
+    width: 100%;
 }
 
 .copyright {
@@ -247,7 +178,7 @@ footer {
 }
 
 .text-content {
-    padding: 3em;
+    padding: 4em;
     text-align: justify;
     text-justify: inter-word;
 }
