@@ -42,6 +42,7 @@ input[type="search"]::-webkit-search-results-decoration {
 body{
     display: flex;
 }
+
 hr {
     left: 5%;
     background-color: var(--gray-border);
@@ -72,17 +73,27 @@ hr {
     width: 80px;
 }
 
-.content {
-    width: 100%;
-    background-color: var(--white);
-    height: 100vh;
+.principal-panel {
+    right: 0;
+    top: 0;
+    padding-top: 15px;
     margin-left: 32%;
 }
 
 .header-content {
-    display: flex;
-    padding-top: 15px;
-    height: 6vh;
+    background-color: white;
+    position: fixed;
+    top: 0;
+    padding: 18px;
+    width: 68%;
+}
+
+.content {
+    margin-right: 11%;
+    margin-top: 10px;
+    padding: 5em;
+    text-align: justify;
+    text-justify: inter-word;
 }
 
 input:focus {
@@ -94,7 +105,7 @@ input:focus {
 .search {
     color: var(--gray-line);
     margin-inline: 40px;
-    width: 45%;
+    width: 40%;
     padding: 1em;
     -webkit-transition: 0.5s;
     transition: 0.5s;
@@ -119,7 +130,7 @@ input:focus {
     color: var(--black-link);
     font-size: 14px;
     margin-top: 15px;
-    margin-left: 8em;
+    margin-left: 6.5em;
     text-decoration: none;
 }
 
@@ -177,12 +188,6 @@ footer {
     font-size: 14px;
 }
 
-.text-content {
-    padding: 4em;
-    text-align: justify;
-    text-justify: inter-word;
-}
-
 h1 {
     font-family: var(--font);
     font-weight: 300;
@@ -204,14 +209,25 @@ h3 {
     font-weight: 500;
     font-size: 20px;
     color: var(--font-color-h3);
-    margin: 15px 0 15px 0;
+    margin-top: 25px;
 }
 
 p {
     font-family: var(--font);
     font-weight: 400;
-    font-size: 16px;
+    font-size: 17px;
     color: var(--font-color-p);
     margin: 15px 0 15px 0;
     line-height: 1.5em;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+.image {
+    margin: auto;
+    display: block;
+    width: 150px;
+    border-radius: 6px;
 }
