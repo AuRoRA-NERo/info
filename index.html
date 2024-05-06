@@ -1,114 +1,171 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AuRoRA</title>
-    <link rel="stylesheet" href="./reset.css">
-    <link rel="stylesheet" href="./style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
-        rel="stylesheet">
-</head>
-
-<body>
-    <div class="side-panel">
-        <div class="header-side-panel">
+   <head>
+      <!-- METADATA --> 
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>AuRoRA</title>
+      <link rel="stylesheet" href="./reset.css">
+      <link rel="stylesheet" href="./style.css">
+      
+      <!-- Font --> 
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link
+         href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+         rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+         rel="stylesheet">
+      
+         <!-- Icons --> 
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      
+      <!-- Javascript --> 
+      <script type="text/javascript" src="script.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+   </head>
+   <body>
+      <!-- Theme toggle button --> 
+      <button id="toggle" class="toggle"><i id="toggle-icon" class="fa fa-moon-o"></i></button>
+      
+      <!-- Side panel --> 
+      <div class="side-panel">
+         <div class="header-side-panel">
             <img src="./src/logo-nero.png" class="logo">
-        </div>
-        <hr>
-        <ul class="nav-bar">
+         </div>
+         <hr>
+         
+         <!-- Pages navigation --> 
+         <ul class="nav-bar">
             <li class="nav-item nav-item-active">
-                <a href="#" class="nav-link nav-link-active">Introdução</a>
+               <a href="#" class="nav-link nav-link-active">Introdução</a>
             </li>
             <li class="nav-item">
-                <a href="installation.html" class="nav-link">Instalação</a>
+               <a href="#" class="nav-link">Instalação</a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">Organização</a>
+               <a href="simulation.html" class="nav-link">Simulação</a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">Robôs</a>
+               <a href="#" class="nav-link">Robôs</a>
+               <div class="drop-btn" onclick="expand_list(this)">
+                  <i class="fa fa-caret-down"></i>
+               </div>
+               <ul class="sub-nav-bar">
+                  <li class="nav-item">
+                     <a href="#" class="nav-link">ArDrone</a>
+                     <div class="drop-btn" onclick="expand_list(this)">
+                        <i class="fa fa-caret-down"></i>
+                     </div>
+                     <ul class="sub-nav-bar">
+                        <li class="nav-item">
+                           <a href="#" class="nav-link">Modelo matemático</a>
+                        </li>
+                        <li class="nav-item">
+                           <a href="#" class="nav-link">Variáveis e funções</a>
+                        </li>
+                        <li class="nav-item">
+                           <a href="#" class="nav-link">Sensores</a>
+                        </li>
+                        <li class="nav-item">
+                           <a href="#" class="nav-link">Controlador</a>
+                        </li>
+                     </ul>
+                  </li>
+                  <li class="nav-item">
+                     <a href="#" class="nav-link">Pioneer 3DX</a>
+                  </li>
+                  <li class="nav-item">
+                     <a href="#" class="nav-link">Bebop 2</a>
+                  </li>
+               </ul>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">Acessórios</a>
+               <a href="#" class="nav-link">Acessórios</a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">Extra</a>
+               <a href="#" class="nav-link">Extra</a>
             </li>
-        </ul>
-
-        <footer>
+         </ul>
+         
+         <!-- Footer -->
+         <footer>
             <h6 class="copyright">©NERo 2023</h6>
-        </footer>
-
-    </div>
-
-    <div class="principal-panel">
-        <div class="header-content">
-            <input class="search" type="search" id="search" name="search" placeholder="Search in AuRoRA" />
+         </footer>
+      </div>
+      
+      <!-- Principal panel --> 
+      <div class="principal-panel">
+         <div class="header-principal-panel">
+            <input id="search" class="search" type="search" name="search" placeholder="Pesquise no AuRoRA" oninput="search()" />
+            <div id="result" class="search-result">
+            </div>
             <a class="link" href="https://github.com/AuRoRA-NERo" target="_blank"> AuRoRA GitHub </a>
             <a class="link" href="https://www.robotica.ufv.br/" target="_blank"> NERo </a>
-        </div>
-
-        <div class="content">
+         </div>
+         
+         <!-- Content of page --> 
+         <div class="content">
             <h1>Introdução</h1>
             <p> AuRoRA (Autonomous Robots for Research and Application) é uma plataforma de simulação e experimentação
-                de robôs móveis em tempo real, hospedada atualmente no MATLAB, onde seus componentes (robôs, sensores,
-                atuadores, modelagem dinâmica e cinemática de UAVs, controle, etc.) são simulados usando modelos
-                matemáticos descritivos.</p>
-            <p>A AuRoRA proporciona ferramentas para simular e controlar robôs com diferentes tipos e características,
-                bem como diferentes estratégias de controle envolvendo um ou mais robôs simultaneamente. A plataforma é
-                dividida em vários módulos que podem ser habilitados ou desabilitados, por exemplo, um joystick pode ser
-                habilitado para assumir o controle de um VANT (Veículo Aéreo Não Tripulado), como uma medida de
-                segurança.</p>
+               de robôs móveis em tempo real, hospedada atualmente no MATLAB, onde seus componentes (robôs, sensores,
+               atuadores, modelagem dinâmica e cinemática de UAVs, controle, etc.) são simulados usando modelos
+               matemáticos descritivos.
+            </p>
+            <p>A AuRoRA proporciona ferramentas para simular e controlar robôs com diferentes tipos e características,
+               bem como diferentes estratégias de controle envolvendo um ou mais robôs simultaneamente. A plataforma é
+               dividida em vários módulos que podem ser habilitados ou desabilitados, por exemplo, um joystick pode ser
+               habilitado para assumir o controle de um VANT (Veículo Aéreo Não Tripulado), como uma medida de
+               segurança.
+            </p>
             <p>Durante a execução, seja em simulação ou experimentação em tempo real, a AuRoRA estabelece uma
-                comunicação bidirecional, coletando dados sensoriais e enviando sinais de controle para que o robô
-                execute a tarefa designada. No entanto, essa ação só ocorre com a autorização de execução ativada; caso
-                contrário, nenhuma ação é realizada. Quando autorizada, dados de referência de navegação e erros de
-                navegação são obtidos e, com base nessas informações, os sinais de controle necessários são determinados
-                e transmitidos ao robô para a execução do comando.</p>
+               comunicação bidirecional, coletando dados sensoriais e enviando sinais de controle para que o robô
+               execute a tarefa designada. No entanto, essa ação só ocorre com a autorização de execução ativada; caso
+               contrário, nenhuma ação é realizada. Quando autorizada, dados de referência de navegação e erros de
+               navegação são obtidos e, com base nessas informações, os sinais de controle necessários são determinados
+               e transmitidos ao robô para a execução do comando.
+            </p>
             <p>Em um VANT real, os sinais de controle são enviados ao sistema embarcado, que os aplica diretamente aos
-                atuadores. Após interagir com o ambiente, os sensores embarcados registram os valores da nova condição
-                de voo, transmitindo-os de volta à plataforma para reiniciar o ciclo de controle.</p>
+               atuadores. Após interagir com o ambiente, os sensores embarcados registram os valores da nova condição
+               de voo, transmitindo-os de volta à plataforma para reiniciar o ciclo de controle.
+            </p>
             <p>Na simulação de um VANT, os sinais de controle são direcionados ao modelo dinâmico, incluindo o modelo do
-                atuador e do corpo rígido, considerando incertezas e perturbações nas manobras de voo. Após atuar no
-                modelo, a postura futura é determinada por integração numérica, atualizando as variáveis de estado.
-                Nesse ponto, esses dados ficam disponíveis para uma nova permissão de execução do sistema de controle.
+               atuador e do corpo rígido, considerando incertezas e perturbações nas manobras de voo. Após atuar no
+               modelo, a postura futura é determinada por integração numérica, atualizando as variáveis de estado.
+               Nesse ponto, esses dados ficam disponíveis para uma nova permissão de execução do sistema de controle.
             </p>
             <p>Além disso, a plataforma apresenta a funcionalidade de exibição gráfica. Por exemplo, durante a simulação
-                de um voo de um VANT, quando a função de exibição gráfica está ativada, uma ilustração do estado atual é
-                feita ao longo da tarefa de voo, em cada período pré-definido.</p>
+               de um voo de um VANT, quando a função de exibição gráfica está ativada, uma ilustração do estado atual é
+               feita ao longo da tarefa de voo, em cada período pré-definido.
+            </p>
             <p>Finalmente, é relevante mencionar que, ao final da rotina de navegação, todos os dados são armazenados,
-                criando um registro que pode ser recuperado a qualquer momento para análise do progresso da missão.</p>
-
+               criando um registro que pode ser recuperado a qualquer momento para análise do progresso da missão.
+            </p>
             <h3> Robôs </h3>
-            <p>A plataforma AuRoRA oferece acesso à alguns robôs para simulação e controle, incluindo o Pioneer 3DX, o
-                ArDrone 2.0 Parrot e o Bebop 2 Parrot. Cada um desses robôs apresenta diferentes características e
-                habilidades, isso confere à plataforma uma notável versatilidade, permite a exploração de simulação e
-                controle em uma ampla gama de cenários e contextos, adaptando-se às necessidades específicas de cada
-                aplicação.</p>
+            <p>A plataforma AuRoRA oferece acesso à alguns robôs para simulação e controle, incluindo o Pioneer 3DX, o
+               ArDrone 2.0 Parrot e o Bebop 2 Parrot. Cada um desses robôs apresenta diferentes características e
+               habilidades, isso confere à plataforma uma notável versatilidade, permite a exploração de simulação e
+               controle em uma ampla gama de cenários e contextos, adaptando-se às necessidades específicas de cada
+               aplicação.
+            </p>
             <p>O <span class="bold">Pioneer 3DX</span> trata-se de um robô terrestre com uma plataforma móvel. Sendo um
-                veículo terrestre não tripulado (VTNT) fabricado pela empresa Adept Mobile Robots, equipado com sonares
-                e enconders, ele oferece a oportunidade de simular e testar estratégias de navegação em terrenos
-                desconhecidos.</p>
-                <img src="src/Pioneer3DX.png" alt="Pioneer 3DX" class="image">
-
+               veículo terrestre não tripulado (VTNT) fabricado pela empresa Adept Mobile Robots, equipado com sonares
+               e enconders, ele oferece a oportunidade de simular e testar estratégias de navegação em terrenos
+               desconhecidos.
+            </p>
+            <img src="src/Pioneer3DX.png" alt="Pioneer 3DX" class="image">
             <p>O <span class="bold">ArDrone 2.0</span> é conhecido como um “drone quadricóptero” fabricado pela empresa
-                Parrot, que permite a simulação e experimentação de estratégias de controle em ambientes aéreos.
-                Trata-se de um veículo aéreo não tripulado (VANT) equipados com sonares, encoders, câmeras dianteira e
-                inferior, sendo muito eficaz para tarefas de mapeamento aéreo.</p>
-                <img src="src/ArDrone2.jpg" alt="Pioneer 3DX" class="image">
-
+               Parrot, que permite a simulação e experimentação de estratégias de controle em ambientes aéreos.
+               Trata-se de um veículo aéreo não tripulado (VANT) equipados com sonares, encoders, câmeras dianteira e
+               inferior, sendo muito eficaz para tarefas de mapeamento aéreo.
+            </p>
+            <img src="src/ArDrone2.jpg" alt="Pioneer 3DX" class="image">
             <p>O <span class="bold">Bebop 2</span> é outro “drone quadricóptero” do tipo VANT da empresa Parrot.
-                Trata-se de um modelo superior ao ArDrone 2.0, que apesar de possuir os mesmos equipamentos do seu
-                antecessor, suas qualidades são superiores, possibilitando melhores resultados.</p>
-                <img src="src/Bebop2.jpg" alt="Pioneer 3DX" class="image">
-        </div>
-    </div>
-</body>
-
+               Trata-se de um modelo superior ao ArDrone 2.0, que apesar de possuir os mesmos equipamentos do seu
+               antecessor, suas qualidades são superiores, possibilitando melhores resultados.
+            </p>
+            <img src="src/Bebop2.jpg" alt="Pioneer 3DX" class="image">
+         </div>
+      </div>
+   </body>
 </html>
