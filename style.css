@@ -384,7 +384,7 @@ input:focus {
 /* Style of content - all information of page */
 .content {
     background-color: var(--content-background);
-    width: 73%;
+    width: 75%;
     margin-right: 12%;
     margin-top: 10px;
     padding: 5em;
