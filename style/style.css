@@ -217,6 +217,25 @@ footer {
 .nav-bar {
     margin-top: 20%;
     padding-left: 42%;
+    height: 60vh;
+    overflow-y: auto;
+}
+
+/* Scroll bar custom */
+::-webkit-scrollbar {
+    width: 5px;
+}
+  
+::-webkit-scrollbar-track {
+    background: var(--side-panel-background);
+}
+  
+::-webkit-scrollbar-thumb {
+    background: #cdcdcd;
+}
+  
+::-webkit-scrollbar-thumb:hover {
+    background: #b0b0b0;
 }
 
 /* Itens of pages navigation */
