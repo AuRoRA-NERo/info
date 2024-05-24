@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <!-- METADATA --> 
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>AuRoRA</title>
+        <link rel="stylesheet" href="../style/reset.css">
+        <link rel="stylesheet" href="../style/style.css">
+
+        <!-- Font --> 
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+            rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+            rel="stylesheet">
+        
+            <!-- Icons --> 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+        <!-- Javascript --> 
+        <script type="text/javascript" src="../script.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    </head>
+
+    <body>
+        <!-- Theme toggle button --> 
+        <button id="toggle" class="toggle"><i id="toggle-icon" class="fa fa-moon-o"></i></button>
+        
+        <!-- Side panel --> 
+        <div class="side-panel">
+            <div class="header-side-panel">
+                <img src="../src/logo-nero.png" class="logo">
+            </div>
+            <hr>
+            
+            <!-- Pages navigation --> 
+            <ul class="nav-bar">
+                <li class="nav-item nav-item-active">
+                    <a href="#" class="nav-link nav-link-active">Introdução</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Instalação</a>
+                </li>
+                <li class="nav-item">
+                    <a href="simulation.html" class="nav-link">Simulação</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Robôs</a>
+                    <div class="drop-btn" onclick="expand_list(this)">
+                        <i class="fa fa-caret-down"></i>
+                    </div>
+                    
+                    <ul class="sub-nav-bar">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">ArDrone</a>
+                            <div class="drop-btn" onclick="expand_list(this)">
+                                <i class="fa fa-caret-down"></i>
+                            </div>
+                            
+                            <ul class="sub-nav-bar">
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">Modelo matemático</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">Variáveis e funções</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">Sensores</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">Controladores</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Pioneer 3DX</a>
+                            <div class="drop-btn" onclick="expand_list(this)">
+                                <i class="fa fa-caret-down"></i>
+                            </div>
+                            
+                            <ul class="sub-nav-bar">
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">Modelo matemático</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">Variáveis e funções</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">Sensores</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">Controladores</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Bebop 2</a>
+                            <div class="drop-btn" onclick="expand_list(this)">
+                                <i class="fa fa-caret-down"></i>
+                            </div>
+                            
+                            <ul class="sub-nav-bar">
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">Modelo matemático</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">Variáveis e funções</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">Sensores</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">Controladores</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Ambiente</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Gráficos</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Ferramentas</a>
+                    <div class="drop-btn" onclick="expand_list(this)">
+                        <i class="fa fa-caret-down"></i>
+                    </div>
+                    
+                    <ul class="sub-nav-bar">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">ROS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">OptiTrack</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <!-- Footer -->
+            <footer>
+                <h6 class="copyright">©NERo 2023</h6>
+            </footer>
+        </div>
+
+        <!-- Principal panel --> 
+        <div class="principal-panel">
+            <div class="header-principal-panel">
+                <input id="search" class="search" type="search" name="search" placeholder="Pesquise no AuRoRA" oninput="search()" />
+                <div id="result" class="search-result">
+                </div>
+                <a class="link" href="https://github.com/AuRoRA-NERo" target="_blank"> AuRoRA GitHub </a>
+                <a class="link" href="https://www.robotica.ufv.br/" target="_blank"> NERo </a>
+            </div>
+            
+            <!-- Content of page --> 
+            <div class="content">
+                <h1>Title</h1>
+                <p> content content content content content content content content content content content content content content </p> 
+            </div>
+        </div>
+    </body>
+</html>

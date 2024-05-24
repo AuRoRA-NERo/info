@@ -18,6 +18,7 @@
     --toggle: #dfdedf;
     --toggle-hover: #c3c3c3;
     --drop-btn: #959396;
+    --sub-drop-btn: #b2b1b2;
     --copy-alert-background: #EBEDF5;
     --font-color-copy-alert: #000;
 
@@ -75,6 +76,7 @@
     --toggle: #bbbbbb;
     --toggle-hover: #cdcdcd;
     --drop-btn: #aaaaaa;
+    --sub-drop-btn: #838383;
     --copy-alert-background: #d2d2d2;
     --font-color-copy-alert: #0b0b0b;
 
@@ -270,6 +272,9 @@ footer {
 /* Margin space of intern page navigation */
 .sub-nav-bar li {
     margin-left: 35px;
+}
+.sub-nav-bar .drop-btn {
+    color: var(--sub-drop-btn);
 }
 
 /* Copyright text */
