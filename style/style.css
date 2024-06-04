@@ -61,17 +61,17 @@
     --font: 'Roboto', sans-serif;
 
     --background: #121212;
-    --h1: #d9d9d9;
-    --h2: #d9d9d9;
-    --h3: #d9d9d9;
-    --p: #d9d9d9;
+    --h1: #d9d9d9c8;
+    --h2: #d9d9d9c8;
+    --h3: #d9d9d9c8;
+    --p: #d9d9d9c6;
 
     --side-panel-background:#171717;
     --nav-item-background: transparent;
     --gray-gradient-start: #151515;
     --gray-gradient-end: #1f1f1f;
-    --nav-link: #c5c4c4;
-    --nav-link-active: #d3d3d3;
+    --nav-link: #c5c4c4c4;
+    --nav-link-active: #d3d3d3c4;
 
     --toggle: #bbbbbb;
     --toggle-hover: #cdcdcd;
@@ -103,12 +103,12 @@
 
     --code-font: "Roboto Mono", monospace;
     --code-background: #161616;
-    --font-color-code: #cfcfcf;
+    --font-color-code: #cfcfcfe0;
     --thin-border-code: #292929;
     --fat-border-code: #434343;
-    --commentary: #97f497;
-    --purple-command: #a67fe4;
-    --blue-command: #0098ff;
+    --commentary: #97f497bc;
+    --purple-command: #a67fe4d7;
+    --blue-command: #0099ffd3;
 
     --attention: #ff5454;
     --list-item: #bcbcbc;
