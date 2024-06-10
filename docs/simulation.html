@@ -3,11 +3,13 @@
 
 <!-- Title -->
 <h1>Simulação</h1>
+
 <!-- Paragraph -->
 <p>Ao utilizar a plataforma pela primeira vez, você pode optar por criar um código para controlar o robô ou
     utilizar os códigos disponíveis na aba de exemplos para simulação. O algoritmo segue a seguinte
     estrutura:
 </p>
+
 <!-- Code  -->
 <div class="code" id="code1">
     <button class="copy-btn" type="button" onclick="copy_data(code1)"><i class="fa fa-copy"></i></button>
@@ -37,18 +39,22 @@
     <div><span class="tab"> </span><span class="bold">end if</span> </div>
     <div> <span class="bold">end while</span> </div>
 </div>
+
 <p>
     Na pasta de exemplos do AuRoRA, há alguns arquivos exemplos que servem como referência para a simulação
     de robôs. Esses arquivos são úteis para o aprendizado e para compreender o funcionamento da plataforma.
     Recomenda-se fazer uma cópia do arquivo original antes de utilizá-los, a fim de evitar alterações
     indesejadas.
 </p>
+
 <!-- Image -->
-<img src="../src/manual_1.png" alt="Pasta de arquivos" class="large-image">
+<img src="./src/manual_1.png" alt="Pasta de arquivos" class="large-image">
+
 <p>
     Abrir o arquivo "simulacaocopia" no MATLAB. Nesse caso, o arquivo é uma cópia do exemplo de simulação de
     controle da posição.
 </p>
+
 <div class="code" id="code2">
     <button class="copy-btn" type="button" onclick="copy_data(code2)"><i class="fa fa-copy"></i></button>
     <div>close <span class="purple-command">all</span></div>
@@ -73,14 +79,17 @@
     <div><span class="commentary">% Arquivo Texto</span></div>
     <div>ArqTxt = fopen('<span class="purple-command">DadosExp.txt</span>');</div>
 </div>
+
 <p>
     No caso em que se deseja fazer um novo arquivo do zero, é importante que essa estrutura inicial padrão
     seja mantida.
 </p>
+
 <p>É crucial destacar que na variável "PastaRaiz" é necessário que conste o nome exato da pasta tal como
     está salvo em seu computador. Por exemplo, se a pasta for nomeada como "AuRoRA" em vez de "AuRoRA 2018",
     então esse nome deve ser substituído dentro do código.
 </p>
+
 <p>
     Nesse início do código, é realizada a inicialização dos robôs que serão utilizados, sendo o ArDrone o
     exemplo aqui considerado. Para isso, declara-se A=ArDrone. Com esta instrução, o robô referenciado por A
@@ -89,12 +98,16 @@
     variável z é definida com um valor correspondente à altura de 0,75m. Caso seja desejado definir uma
     posição inicial específica para o drone, isso pode ser feito logo abaixo da sua inicialização.
 </p>
+
 <p>O vetor de referência X é definido pelas seguintes variáveis: </p>
-<img src="../src/vetor.png" alt="Vetor de referência X" class="image">
+
+<img src="./src/vetor.png" alt="Vetor de referência X" class="image">
+
 <p>O vetor é originalmente composto por 12 variáveis, no entanto, para determinar apenas a posição do drone
     no espaço 3D, é preciso apenas das três primeiras variáveis (1:3) que são as que correspondem a x, y, e
     z.
 </p>
+
 <div class="code" id="code3">
     <button class="copy-btn" type="button" onclick="copy_data(code3)"><i class="fa fa-copy"></i></button>
     <div>A = ArDrone;</div>
@@ -115,15 +128,19 @@
     <div>pause(1) </div>
     <div>disp('<span class="purple-command">Start..........</span>') </div>
 </div>
+
 <p>
     Logo após a inicialização, encontramos a declaração de um joystick para aqueles que desejam
     implementá-lo, juntamente com a criação de um arquivo de texto destinado a armazenar as informações da
     simulação. Além disso, é criado o ambiente de simulação e a representação gráfica do robô dentro deste
     ambiente, identificado como "figure (1)".
 </p>
-<p>Com tudo isso configurado, podemos agora iniciar o laço controle, onde o usuário definirá sua estratégia
+
+<p>
+    Com tudo isso configurado, podemos agora iniciar o laço controle, onde o usuário definirá sua estratégia
     e a missão do robô:
 </p>
+
 <div class="code" id="code4">
     <button class="copy-btn" type="button" onclick="copy_data(code4)"><i class="fa fa-copy"></i></button>
     <div><span class="commentary">% controle</span></div>
@@ -138,185 +155,210 @@
     <br>
     <div>XX = [];</div>
 </div>
+
 <p>
     Definimos o tempo de simulação, inicializamos os contadores e criamos o loop de controle, onde
     especificamos a posição desejada do drone.
 </p>
+
 <div class="code" id="code5">
     <button class="copy-btn" type="button" onclick="copy_data(code5)"><i class="fa fa-copy"></i></button>
     <div> <span class="blue-command">while</span> toc(t) < tmax </div>
-            <div><span class="tab"></span><span class="blue-command"> if </span> toc(tc) > 1/30
-            </div>
-            <div><span class="tab2"></span>tc = tic; </div>
-            <br>
-            <div> <span class="tab2"></span>A.pPos.Xd(3) = 2;</div>
+    <div><span class="tab"></span><span class="blue-command"> if </span> toc(tc) > 1/30
     </div>
+    <div><span class="tab2"></span>tc = tic; </div>
+    <br>
+    <div> <span class="tab2"></span>A.pPos.Xd(3) = 2;</div>
+</div>
+
+<p>
+    Neste ponto, foi definida a posição desejada, onde pretendemos que nosso drone parta de uma altitude
+    de 0.75m e suba até 2m. No entanto, ainda falta implementar o controlador. O controlador é uma
+    função matemática que calcula os sinais de controle com base nas informações da posição atual e
+    desejada. A partir dessas informações, ele calcula o "erro" e retorna comandos para realizar a
+    tarefa.
+</p>
+
+<p>
+    No AuRoRA, existem alguns controladores pré-programados prontos para serem utilizados. No entanto,
+    se o usuário desejar criar um novo controlador personalizado, isso também é possível. Basta ter um
+    referencial teórico das equações para uma implementação adequada.
+</p>
+
+<img src="./src/manual_2.png" alt="Pasta de arquivos" class="large-image">
+
+<p>
+    Para este exemplo, foi utilizado o controlador "cUnderActuatedController".
+</p>
+
+<div class="code" id="code6">
+    <button class="copy-btn" type="button" onclick="copy_data(code6)"><i class="fa fa-copy"></i></button>
+    <div> <span class="blue-command">while</span> toc(t) < tmax </div>
+    <div><span class="tab"></span><span class="blue-command"> if </span> toc(tc) > 1/30 </div>
+    <div><span class="tab2"></span>tc = tic; </div>
+    <br>
+    <div> <span class="tab2"></span>A.pPos.Xd(3) = 2;</div>
+    <br>
+    <div><span class="tab2"></span><span class="commentary"> % Controlador</span></div>
+    <div> <span class="tab2"></span>A.rGetSensorData</div>
+    <div><span class="tab2"></span>A = cUnderActuatedController(A);</div>
+    <div><span class="tab2"></span>A.rSendControlSignals;</div>
+    <br>
+    <div><span class="tab2"></span>XX = [XX [A.pPos.Xd; A.pPos.X; A.pSC.Ud; toc(t)]];</div>
+    <div><span class="tab1"></span> <span class="blue-command">end</span></div>
+</div>
+
+<p>
+    Se for de interesse utilizar o joystick para controlar o robô, é necessário adicioná-lo após o controlador,
+    uma vez que é preciso sobrepor os sinais de controle calculados pelo controlador autônomo:
+</p>
+
+<div class="code" id="code7">
+    <button class="copy-btn" type="button" onclick="copy_data(code7)"><i class="fa fa-copy"></i></button>
+    <div><span class="tab"></span> ... </div>
+    <br>
+    <div><span class="tab2"></span> <span class="commentary"> % Controlador </span></div>
+    <div><span class="tab2"></span> A.rGetSensorData</div>
+    <br>
+    <div><span class="tab2"></span>A = cUnderActuatedController(A);</div>
+    <br>
+    <div><span class="tab2"></span><span class="commentary">% Joystick: Sobrepõe controlador </span></div>
+    <div><span class="tab2"></span>A = J.mControl(A);</div>
+    <div><span class="tab2"></span>A.rSendControlSignals;</div>
+    <br>
+    <div><span class="tab"></span> ... </div>
+</div>
+
+<p>
+    Se o usuário estiver interessado em controlar as posições do drone ao longo do tempo, isso também pode ser
+    feito dentro do loop, por exemplo:
+</p>
+
+<div class="code" id="code8">
+    <button class="copy-btn" type="button" onclick="copy_data(code8)"><i class="fa fa-copy"></i></button>
+    <div><span class="blue-command"> while </span> toc(t) < tmax </div>
+    <div><span class="tab"></span> <span class="blue-command">if</span> toc(tc) > 1/30</div>
+    <div><span class="tab2"></span>tc = tic;</div>
+    <div><span class="tab2"></span> <span class="blue-command">if </span>toc(t) > 3*tmax/4</div>
+    <div><span class="tab3"></span>A.pPos.Xd(1) = 0;</div>
+    <div><span class="tab3"></span>A.pPos.Xd(3) = 1;</div>
+    <br>
+    <div><span class="tab2"></span> <span class="blue-command">elseif </span>toc(t) > 2*tmax/4</div>
+    <div><span class="tab3"></span>A.pPos.Xd(3) = 2;</div>
+    <br>
+    <div><span class="tab2"></span><span class="blue-command">elseif</span> toc(t) > tmax/4</div>
+    <div><span class="tab3"></span>A.pPos.Xd(3) = 0.5;</div>
+    <br>
+    <div><span class="tab2"></span><span class="blue-command">else</span></div>
+    <div><span class="tab3"></span>A.pPos.Xd(3) = 0.2;</div>
+    <div><span class="tab2"></span><span class="blue-command">end</span></div>
+    <br>
+    <div><span class="tab2"></span><span class="commentary">% Controlador</span></div>
+    <div><span class="tab2"></span>A.rGetSensorData</div>
+    <div><span class="tab2"></span>A = cUnderActuatedController(A);</div>
+    <br>
+    <div><span class="tab2"></span><span class="commentary">% Joystick: Sobrepõe controlador</span>
+    </div>
+    <div><span class="tab2"></span>A = J.mControl(A);</div>
+    <div><span class="tab2"></span>A.rSendControlSignals;</div>
+    <br>
+    <div><span class="tab2"></span>XX = [XX [A.pPos.Xd; A.pPos.X; A.pSC.Ud; toc(t)]];</div>
+    <div><span class="tab"></span><span class="blue-command">end</span></div>
+    <div><span class="tab"></span><span class="blue-command">if</span> toc(tp) > 0.3</div>
+    <div><span class="tab2"></span>tp = tic;</div>
+    <div><span class="tab2"></span>A.mCADplot;</div>
+    <div><span class="tab2"></span>drawnow</div>
+    <div><span class="tab"></span><span class="blue-command">end</span></div>
+    <div><span class="blue-command">end</span></div>
+</div>
+
+<p>
+    No decorrer deste loop, ocorre o seguinte: nos primeiros 10 segundos de simulação, o drone é controlado
+    a
+    uma altura de 0.2m; entre 10 e 20 segundos, ele sobe para 0.5m; entre 20 e 30 segundos, ele sobe ainda
+    mais,
+    alcançando 2m de altura; por fim, nos últimos 10 segundos, ele desce, estabilizando em 1m de altura.
+</p>
+
+<p>
+    Por fim, os movimentos do drone são plotados no ambiente de simulação conforme as instruções ao longo do
+    tempo.
+</p>
+
+<p>
+    Agora, se o usuário possuir um referencial teórico e desejar implementar um controlador a partir dessa
+    documentação,
+    basta ter um bom entendimento das variáveis de controle para que seja possível incorporar o seu próprio
+    controlador
+    no código. Por exemplo, suponhamos que se deseje implementar o seguinte controlador:
+</p>
+
+<img src="./src/controlador.png" class="large-image">
+
+<!-- Attention message -->
+<div class="attention">
+    <h3>Atenção!</h3>
     <p>
-        Neste ponto, foi definida a posição desejada, onde pretendemos que nosso drone parta de uma altitude
-        de 0.75m e suba até 2m. No entanto, ainda falta implementar o controlador. O controlador é uma
-        função matemática que calcula os sinais de controle com base nas informações da posição atual e
-        desejada. A partir dessas informações, ele calcula o "erro" e retorna comandos para realizar a
-        tarefa.
+        Quando uma variável possui o símbolo "~" sobre ela, significa que é uma variável do vetor
+        correspondente ao "erro"
+        da posição. Esse vetor é denominado como Xtil. Nesse exemplo, o vetor Xtil é obtido da seguinte
+        maneira:
+    </p>
+    <p>A.pPos.Xtil = A.pPos.Xd - A.pPos.X;</p>
+    <p>
+        Xd corresponde ao vetor de referência desejada;
+        X corresponde ao vetor de referência atual.
     </p>
     <p>
-        No AuRoRA, existem alguns controladores pré-programados prontos para serem utilizados. No entanto,
-        se o usuário desejar criar um novo controlador personalizado, isso também é possível. Basta ter um
-        referencial teórico das equações para uma implementação adequada.
+        É possível obter os valores das variáveis necessárias na função, uma vez que Xtil também tem esse
+        formato:
     </p>
-    <img src="../src/manual_2.png" alt="Pasta de arquivos" class="large-image">
-    <p>
-        Para este exemplo, foi utilizado o controlador "cUnderActuatedController".
+</div>
+
+<p>
+    O ArDrone possui quatro sinais de controle, que são: rolagem, arfagem, elevação e guinada. Na
+    plataforma, eles
+    são definidos da seguinte forma:
+</p>
+
+<!-- Center content -->
+<div class="center">
+    <p>A.pSC.Ud(1) - rolagem ou torque em x</p>
+    <p>A.pSC.Ud(2) - arfagem ou torque em y</p>
+    <p>A.pSC.Ud(3) - elevação</p>
+    <p>A.pSC.Ud(4) - guinada ou torque em z </p>
+</div>
+
+<br>
+
+<p>Basta então substituir o controlador anterior pelo que desejamos implementar:</p>
+<p>Assim, temos o nosso controlador:</p>
+
+<div class="center">
+    <p>A.pSC.Ud(3)= A.pPar.m*( tanh(A.pPos.Xtil(9))+ tanh(A.pPos.Xtil(3)))</p>
+    <p>A.pSC.Ud(4)= -A.pPar.Izz* ( tanh(A.pPos.Xtil(12))+ tanh(A.pPos.Xtil(6)))</p>
+</div>
+
+<br>
+
+<h3> Observações </h3>
+
+<!-- Bullet list -->
+<div class="list">
+    <p>As constantes k para este exemplo serão estimadas.</p>
+    <p>Devido ao fato de nossa posição desejada ser constante, as segundas derivadas de zd e Ψd serão
+        consideradas como zero.
     </p>
-    <div class="code" id="code6">
-        <button class="copy-btn" type="button" onclick="copy_data(code6)"><i class="fa fa-copy"></i></button>
-        <div> <span class="blue-command">while</span> toc(t) < tmax </div>
-                <div><span class="tab"></span><span class="blue-command"> if </span> toc(tc) > 1/30 </div>
-                <div><span class="tab2"></span>tc = tic; </div>
-                <br>
-                <div> <span class="tab2"></span>A.pPos.Xd(3) = 2;</div>
-                <br>
-                <div><span class="tab2"></span><span class="commentary"> % Controlador</span></div>
-                <div> <span class="tab2"></span>A.rGetSensorData</div>
-                <div><span class="tab2"></span>A = cUnderActuatedController(A);</div>
-                <div><span class="tab2"></span>A.rSendControlSignals;</div>
-                <br>
-                <div><span class="tab2"></span>XX = [XX [A.pPos.Xd; A.pPos.X; A.pSC.Ud; toc(t)]];</div>
-                <div><span class="tab1"></span> <span class="blue-command">end</span></div>
-        </div>
-        <p>
-            Se for de interesse utilizar o joystick para controlar o robô, é necessário adicioná-lo após o controlador,
-            uma vez que é preciso sobrepor os sinais de controle calculados pelo controlador autônomo:
-        </p>
-        <div class="code" id="code7">
-            <button class="copy-btn" type="button" onclick="copy_data(code7)"><i class="fa fa-copy"></i></button>
-            <div><span class="tab"></span> ... </div>
-            <br>
-            <div><span class="tab2"></span> <span class="commentary"> % Controlador </span></div>
-            <div><span class="tab2"></span> A.rGetSensorData</div>
-            <br>
-            <div><span class="tab2"></span>A = cUnderActuatedController(A);</div>
-            <br>
-            <div><span class="tab2"></span><span class="commentary">% Joystick: Sobrepõe controlador </span></div>
-            <div><span class="tab2"></span>A = J.mControl(A);</div>
-            <div><span class="tab2"></span>A.rSendControlSignals;</div>
-            <br>
-            <div><span class="tab"></span> ... </div>
-        </div>
-        <p>
-            Se o usuário estiver interessado em controlar as posições do drone ao longo do tempo, isso também pode ser
-            feito dentro do loop, por exemplo:
-        </p>
-        <div class="code" id="code8">
-            <button class="copy-btn" type="button" onclick="copy_data(code8)"><i class="fa fa-copy"></i></button>
-            <div><span class="blue-command"> while </span> toc(t) < tmax </div>
-                    <div><span class="tab"></span> <span class="blue-command">if</span> toc(tc) > 1/30</div>
-                    <div><span class="tab2"></span>tc = tic;</div>
-                    <div><span class="tab2"></span> <span class="blue-command">if </span>toc(t) > 3*tmax/4</div>
-                    <div><span class="tab3"></span>A.pPos.Xd(1) = 0;</div>
-                    <div><span class="tab3"></span>A.pPos.Xd(3) = 1;</div>
-                    <br>
-                    <div><span class="tab2"></span> <span class="blue-command">elseif </span>toc(t) > 2*tmax/4</div>
-                    <div><span class="tab3"></span>A.pPos.Xd(3) = 2;</div>
-                    <br>
-                    <div><span class="tab2"></span><span class="blue-command">elseif</span> toc(t) > tmax/4</div>
-                    <div><span class="tab3"></span>A.pPos.Xd(3) = 0.5;</div>
-                    <br>
-                    <div><span class="tab2"></span><span class="blue-command">else</span></div>
-                    <div><span class="tab3"></span>A.pPos.Xd(3) = 0.2;</div>
-                    <div><span class="tab2"></span><span class="blue-command">end</span></div>
-                    <br>
-                    <div><span class="tab2"></span><span class="commentary">% Controlador</span></div>
-                    <div><span class="tab2"></span>A.rGetSensorData</div>
-                    <div><span class="tab2"></span>A = cUnderActuatedController(A);</div>
-                    <br>
-                    <div><span class="tab2"></span><span class="commentary">% Joystick: Sobrepõe controlador</span>
-                    </div>
-                    <div><span class="tab2"></span>A = J.mControl(A);</div>
-                    <div><span class="tab2"></span>A.rSendControlSignals;</div>
-                    <br>
-                    <div><span class="tab2"></span>XX = [XX [A.pPos.Xd; A.pPos.X; A.pSC.Ud; toc(t)]];</div>
-                    <div><span class="tab"></span><span class="blue-command">end</span></div>
-                    <div><span class="tab"></span><span class="blue-command">if</span> toc(tp) > 0.3</div>
-                    <div><span class="tab2"></span>tp = tic;</div>
-                    <div><span class="tab2"></span>A.mCADplot;</div>
-                    <div><span class="tab2"></span>drawnow</div>
-                    <div><span class="tab"></span><span class="blue-command">end</span></div>
-                    <div><span class="blue-command">end</span></div>
-            </div>
-            <p>
-                No decorrer deste loop, ocorre o seguinte: nos primeiros 10 segundos de simulação, o drone é controlado
-                a
-                uma altura de 0.2m; entre 10 e 20 segundos, ele sobe para 0.5m; entre 20 e 30 segundos, ele sobe ainda
-                mais,
-                alcançando 2m de altura; por fim, nos últimos 10 segundos, ele desce, estabilizando em 1m de altura.
-            </p>
-            <p>
-                Por fim, os movimentos do drone são plotados no ambiente de simulação conforme as instruções ao longo do
-                tempo.
-            </p>
-            <p>
-                Agora, se o usuário possuir um referencial teórico e desejar implementar um controlador a partir dessa
-                documentação,
-                basta ter um bom entendimento das variáveis de controle para que seja possível incorporar o seu próprio
-                controlador
-                no código. Por exemplo, suponhamos que se deseje implementar o seguinte controlador:
-            </p>
-            <img src="../src/controlador.png" class="large-image">
-            <!-- Attention message -->
-            <div class="attention">
-                <h3>Atenção!</h3>
-                <p>
-                    Quando uma variável possui o símbolo "~" sobre ela, significa que é uma variável do vetor
-                    correspondente ao "erro"
-                    da posição. Esse vetor é denominado como Xtil. Nesse exemplo, o vetor Xtil é obtido da seguinte
-                    maneira:
-                </p>
-                <p>A.pPos.Xtil = A.pPos.Xd - A.pPos.X;</p>
-                <p>
-                    Xd corresponde ao vetor de referência desejada;
-                    X corresponde ao vetor de referência atual.
-                </p>
-                <p>
-                    É possível obter os valores das variáveis necessárias na função, uma vez que Xtil também tem esse
-                    formato:
-                </p>
-            </div>
-            <p>
-                O ArDrone possui quatro sinais de controle, que são: rolagem, arfagem, elevação e guinada. Na
-                plataforma, eles
-                são definidos da seguinte forma:
-            </p>
-            <!-- Center content -->
-            <div class="center">
-                <p>A.pSC.Ud(1) - rolagem ou torque em x</p>
-                <p>A.pSC.Ud(2) - arfagem ou torque em y</p>
-                <p>A.pSC.Ud(3) - elevação</p>
-                <p>A.pSC.Ud(4) - guinada ou torque em z </p>
-            </div>
-            <br>
-            <p>Basta então substituir o controlador anterior pelo que desejamos implementar:</p>
-            <p>Assim, temos o nosso controlador:</p>
-            <div class="center">
-                <p>A.pSC.Ud(3)= A.pPar.m*( tanh(A.pPos.Xtil(9))+ tanh(A.pPos.Xtil(3)))</p>
-                <p>A.pSC.Ud(4)= -A.pPar.Izz* ( tanh(A.pPos.Xtil(12))+ tanh(A.pPos.Xtil(6)))</p>
-            </div>
-            <br>
-            <h3> Observações </h3>
-            <!-- Bullet list -->
-            <div class="list">
-                <p>As constantes k para este exemplo serão estimadas.</p>
-                <p>Devido ao fato de nossa posição desejada ser constante, as segundas derivadas de zd e Ψd serão
-                    consideradas como zero.</p>
-                <p>A massa m pode ser obtida nos parâmetros com "A.pPar.m". Analogamente, o momento de inércia Izz é
-                    obtido com "A.pPar.Izz".
-                    A gravidade, no caso do ArDrone, é compensada, portanto podemos ignorá-la neste caso.
-                </p>
-                <p>Foram consideradas todas as constantes k como iguais a 1, apenas para fins demonstrativos.
-                    Entretanto, é importante
-                    ressaltar que elas podem assumir valores diferentes.
-                </p>
-                <p>O sinal negativo no controlador de guinada ocorre porque o sentido do movimento dentro da plataforma
-                    é oposto ao
-                    sentido real.
-                </p>
-            </div>
+    <p>A massa m pode ser obtida nos parâmetros com "A.pPar.m". Analogamente, o momento de inércia Izz é
+        obtido com "A.pPar.Izz".
+        A gravidade, no caso do ArDrone, é compensada, portanto podemos ignorá-la neste caso.
+    </p>
+    <p>Foram consideradas todas as constantes k como iguais a 1, apenas para fins demonstrativos.
+        Entretanto, é importante
+        ressaltar que elas podem assumir valores diferentes.
+    </p>
+    <p>O sinal negativo no controlador de guinada ocorre porque o sentido do movimento dentro da plataforma
+        é oposto ao
+        sentido real.
+    </p>
+</div>
