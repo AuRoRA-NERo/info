@@ -1,2 +1,62 @@
-<h1> Ardrone </h1>
-<p> math </p>
+<h1>Modelo Matemático</h1>
+
+<p> Um quadrotor como o ArDrone segue um modelo matemático que descreve todo seu sistema de movimentação e controle
+    mediante a atuação de forças. O resumo a seguir expõe brevemente as principais concepções acerca desse modelo e os
+    conceitos matemáticos relacionados ao mesmo.
+</p>
+
+<p> A base de sua movimentação é a velocidade angular de seus quatro motores, que a partir de um referencial
+    geoestacionário, permite que o drone realize movimentos, sendo esses o deslocamento nos eixos XYZ e o torque ou rotação
+    nesses próprios eixos.
+</p>
+
+<p>Essas movimentações são feitas em ângulos a partir da velocidade angular dada no sinal de controle do drone e alteram a
+    posição do mesmo no espaço.
+</p>
+
+<img src="./src/moves.png" alt="Movimentação do ArDrone" class="large-image">
+
+<p>Para entender como os torques funcionam, antes é preciso ver a disposição dos motores do ArDrone como dois pares
+    opostos, ou seja, enquanto dois motores (1-3) giram em sentido horário, os outros dois (2-4) giram em sentido
+    anti-horário. Sabendo disso, os torques nos eixos acontecem da seguinte forma: 
+</p>
+
+<p> <span class="bold"> Torque em X</span>, ou rolagem, é realizado alterando-se a velocidade do par oposto disposto no eixo Y de modo que um dos
+    motores acelera proporcionalmente à desaceleração do outro, o que provocará uma “subida” daquele motor que acelerou. 
+</p>
+
+<p> <span class="bold">Torque em Y</span>, ou arfagem, é realizado alterando-se a velocidade do par oposto disposto no eixo X de modo que um dos
+    motores acelera proporcionalmente à desaceleração do outro, o que provocará uma “subida” daquele motor que acelerou. 
+</p>
+
+<p><span class="bold">Torque em Z</span>, ou guinada, é realizado alterando-se a velocidade dos dois pares opostos de modo que um par oposto acelera
+    proporcionalmente à desaceleração do outro, o que leva a uma rotação no sentido oposto a do par acelerado. 
+</p>
+
+<img src="./src/torques.png" alt="Torques" class="large-image">
+
+<div class="attention">
+    <p>É importante lembrar que o referencial 3D do ArDrone é diferente das direções conhecidas dos eixos XYZ, sendo seu eixo Z
+        positivo equivalente ao eixo Z negativo do padrão R3. Por isso, é necessário usar uma matriz de transformação de
+        coordenadas para se comunicar com o drone em seu referencial. Entretanto, no AuRoRA, essa circunstância só precisa ser
+        analisada na implementação de novos controladores. 
+    </p>
+    <img src="./src/eixo_real.png" alt="Torques" class="image">
+</div>
+
+<p>Após saber mais sobre os torques, é importante compreender os sinais de controle: rolagem, arfagem, elevação e guinada.
+    Sendo a elevação o ganho ou a perda de altitude do drone provocada pelo aumento ou redução da velocidade de todos os
+    motores proporcionalmente.
+</p>
+
+<img src="./src/sinais_controle.png" alt="Sinais de controle" class="large-image">
+
+<p>O cálculo dos sinais de controle é responsabilidade do controlador, que gera tal resultado com base em uma função
+    matemática específica a fim de traçar a trajetória desejada com a maior estabilidade possível em um voo autônomo.
+</p>
+
+<p>No AuRoRA, a classe do ArDrone segue esse modelo matemático descrito, o qual foi simplificado para usuários iniciantes
+    compreenderem a base do funcionamento do robô. Há muitos outros conceitos matemáticos, físicos e aerodinâmicos
+    implementados na plataforma que merecem sua atenção e podem ser consultados nos arquivos da classe na medida em que
+    avançar em seus experimentos.
+</p>

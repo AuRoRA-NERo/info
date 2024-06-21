@@ -1,2 +1,110 @@
-<h1> Ardrone </h1>
-<p> variables </p>
+<h1> Variáveis e funções </h1>
+<p>As principais propriedades da classe ArDrone são:</p>
+<p><code>pCAD</code>: imagem do ArDrone</p>
+<p><code>pPar</code>: parâmetros do modelo dinâmico</p>
+<p><code>pID</code>: identificação do robô</p>
+<p><code>pPos</code>: matriz de posição do robô</p>
+<p><code>pSC</code>: sinais de controle</p>
+<p><code>pFlag</code>: flags</p>
+<p><code>pData</code>: dados do voo</p>
+<p><code>pCom</code>: comunicação</p>
+
+<p>Na instanciação de um novo objeto essas propriedades são inicializadas e as seguintes funções são chamadas: <code>iControlVariables</code>, que inicializa as variáveis de posição e sinais de controle; e <code>iParameters</code>, que inicializa variáveis mecânicas do robô, como IP, massa, inércia e coeficientes de ganho.</p>
+
+<h3>Imagem do ArDrone</h3>
+<p>Há inúmeras funções que alteram o modelo gráfico do drone, bem como o plotam ou o deletam da simulação, como os exemplos a seguir:</p>
+<code>mCADcolor(drone,color)</code> 
+<p>modifica a cor do drone passado por parâmetro para color, sendo color dada por um vetor RGB no formato [1 .6 1]</p>
+<code>mCADdel(drone)</code>
+<p>deleta o modelo gráfico do robô passado por parâmetro</p>
+<code>mCADload(drone)</code>
+<p>carrega o modelo gráfico do drone passado por parâmetro</p>
+<code>mCADplot(drone,option,axis)</code>
+<p>plota o modelo gráfico do drone em sua posição atual, seu parâmetro option pode ser ‘indoor’ ou ‘outdoor’.</p>
+
+<h3>Parâmetros do modelo dinâmico</h3>
+<p>Iniciando com <code>pPar</code>, são todas as informações e atributos do drone necessários para a realização dos experimentos com o mesmo, desde variáveis de tempo até os momentos de inércia de cada referencial.</p>
+<p>Alguns exemplos de variáveis de tempo são <code>drone.pPar.t</code>, que armazena o tempo atual, e <code>drone.pPar.ti</code>, que delimita o tempo de flag. Também há parâmetros como <code>drone.pPar.g</code>, que armazena a aceleração da gravidade, e <code>drone.pPar.m</code>, a qual indica a massa do drone.</p>
+<p>Outras variáveis de parâmetros do robô podem ser consultadas no arquivo “iParameters.m” dentro da pasta “@ArDrone” de acordo com a necessidade do usuário.</p>
+<h3>Matriz de posição</h3>
+<p>As coordenadas do robô são armazenadas em <code>drone.pPos.X</code>, a qual representa uma matriz 12x1 disposta da seguinte forma:</p>
+<div class="center">
+    <p>[x y z phi theta psi dx dy dz dphi dtheta dpsii]^T</p>
+</div>
+
+<p>Todas as demais variáveis iniciadas em <code>pPos.X…</code> são de posição e seguem essa mesma disposição, como  <code>drone.pPos.Xd</code>, que indica a posição desejada do drone.</p>
+<p>Como essas variáveis são matrizes, seus valores podem ser acessados por índices indicados entre parênteses. Para acessar o valor de x, por exemplo, basta usar <code>drone.pPos.X(1)</code>.</p>
+<p>Outras variáveis de posição do robô podem ser consultadas no arquivo “iControlVariables.m” dentro da pasta “@ArDrone” de acordo com a necessidade do usuário.</p>
+<br>
+<p>A seguir há algumas funções relacionadas ao conteúdo apresentado anteriormente que podem ser úteis ao usuário.</p>
+<br>
+
+<h3>Criando um objeto da classe ArDrone</h3>
+<p>Seguindo a estrutura do código de simulação do AuRoRA, o primeiro passo é abrir as pastas do projeto.</p>
+<div class="code" id="code1">
+    <button class="copy-btn" type="button" onclick="copy_data(code1)"><i class="fa fa-copy"></i></button>
+    <div><span class="commentary">% Abrindo pasta do AuRoRA</span></div>
+    <br>
+    <div><span class="tab"></span><span class="commentary">% Looking for the root directory</span></div>
+    <div><span class="tab"></span>FolderCurrent = pwd;</div>
+    <br>
+    <div><span class="tab"></span><span class="commentary">% Modify Root Folder if necessary.</span></div>
+    <div><span class="tab"></span>FolderRoot = <span class="purple-command">'AuRoRA'</span>;</div>
+    <br>
+    <div><span class="tab"></span>cd(FolderCurrent(1:(strfind(FolderCurrent,FolderRoot)+numel(FolderRoot)-1)))</div>
+    <div><span class="tab"></span>addpath(genpath(pwd))</div>
+</div>
+
+<p>Em seguida, declare um ArDrone, ou seja, inicialize um objeto do tipo ArDrone.</p>
+<div class="code" id="code2">
+    <button class="copy-btn" type="button" onclick="copy_data(code2)"><i class="fa fa-copy"></i></button>
+    <div><span class="commentary">% Declarando objetos da classe ArDrone</span></div>
+    <div><span class="tab"></span>A = ArDrone;</div>
+</div>
+
+<p>Depois de criado, podemos acessar e controlar as variáveis do objeto, como a sua posição atual, no formato (x, y, z).</p>
+<div class="code" id="code3">
+    <button class="copy-btn" type="button" onclick="copy_data(code3)"><i class="fa fa-copy"></i></button>
+    <div><span class="tab"></span>A.pPos.X(1:3)=[1, 1.5, 1.85];
+    </div>
+</div>
+
+<p>Crie o ambiente e então plote o ArDrone.</p>
+<div class="code" id="code4">
+    <button class="copy-btn" type="button" onclick="copy_data(code4)"><i class="fa fa-copy"></i></button>
+    <div><span class="commentary"> % Plotando o ArDrone</span></div>
+    <div><span class="tab"></span>A.mCADplot
+    </div>
+    <div><span class="tab"></span>drawnow
+    </div>
+</div>
+
+<p>Para criação de múltiplos objetos da classe ArDrone é preciso informar um ID como argumento de cada um deles para garantir o reconhecimento de cada um.</p>
+<div class="code" id="code5">
+    <button class="copy-btn" type="button" onclick="copy_data(code5)"><i class="fa fa-copy"></i></button>
+    <div><span class="commentary">% Declarando objetos da classe ArDrone</span></div>
+    <div><span class="tab"></span>A1= ArDrone(1);
+    </div>
+    <div><span class="tab"></span>A2= ArDrone(2);
+    </div>
+    <div><span class="tab"></span>A3= ArDrone(3);
+    </div>
+    <br>
+    <div><span class="tab"></span>A1.pPos.X(1:3)=[1, 1.5, 1.5];
+    </div>
+    <div><span class="tab"></span>A2.pPos.X(1:3)=[0.5, -0.5, 1.85];
+    </div>
+    <div><span class="tab"></span> A3.pPos.X(1:3)=[-1, -1, 1];
+    </div>
+</div>
+<br>
+
+<h3>Alterando a cor do ArDrone</h3>
+<p>Para alterar a cor de um objeto da classe ArDrone, use a função mCADcolor, na qual drone indica o objeto que será alterado e color é o array RGB da cor a ser aplicada.</p>
+<div class="code" id="code6">
+    <button class="copy-btn" type="button" onclick="copy_data(code6)"><i class="fa fa-copy"></i></button>
+    <div><span class="commentary">% Plotando o ArDrone</span></div>
+    <div><span class="tab"></span>A1.mCADplot</div>
+    <div><span class="tab"></span>mCADcolor(A1,[1 .6 1])</div>
+    <div><span class="tab"></span>drawnow</div>
+</div>

@@ -1,2 +1,51 @@
-<h1> ArDrone </h1>
-<p> controllers </p>
+<h1> Controlador </h1>
+<p>O controlador é responsável pelo cálculo dos sinais de controle do drone a partir de funções matemáticas construídas com base no modelo dinâmico do drone junto de conceitos algébricos. Na plataforma do AuRoRA, existem alguns controladores já implementados para uso do usuário, mas caso este queira implementar o seu próprio controlador basta ter as funções que o descreve em mãos.</p>
+<p>A seguir há um passo a passo geral da implementação de um controlador PVTOL a partir de alguns artigos. Entendendo como o processo é feito, o usuário será capaz de implementar qualquer outro controlador.</p>
+<br>
+
+<h3>Controlador PVTOL</h3>
+<p>...</p>
+<br>
+
+<p>A seguir há algumas funções relacionadas ao conteúdo apresentado anteriormente que podem ser úteis ao usuário.</p>
+<br>
+
+<h3>Simulando uma trajetória usando controlador</h3>
+<p>Após criar o ArDrone, o ambiente e plotar o robô para iniciar a simulação siga os seguintes passos:</p>
+<p>Determine os tempos de amostragem.</p>
+<div class="code" id="code1">
+    <button class="copy-btn" type="button" onclick="copy_data(code1)"><i class="fa fa-copy"></i></button>
+    <div><span class="commentary">% Tempos de amostragem</span></div>
+    <div>tmax = 20; <span class="commentary">% Time in seconds</span></div>
+    <div>t = tic;</div>
+    <div>tc = tic;</div>
+    <div>tp = tic;</div>
+</div>
+
+<p>Implemente o loop da simulação indicando a posição desejada que o ArDrone deve alcançar e indique qual controlador ele deve usar. Por fim, plote o robô novamente.</p>
+<div class="code" id="code2">
+    <button class="copy-btn" type="button" onclick="copy_data(code2)"><i class="fa fa-copy"></i></button>
+    <div><span class="blue-command">while</span> toc(t) < tmax</div>
+    <div><span class="tab"></span><span class="blue-command">if</span> toc(tc) > 1/30</div>
+    <div><span class="tab2"></span>tc = tic;</div>
+    <br>
+    <div><span class="tab2"></span><span class="commentary">% Indica a posição desejada do drone</span></div>
+    <div><span class="tab2"></span>A.pPos.Xd(1:3) = [1 1 2]';</div>
+    <br>
+    <div><span class="tab2"></span><span class="commentary">% Adquire os dados dos sensores</span></div>
+    <div><span class="tab2"></span>A.rGetSensorData</div>
+    <br>
+    <div><span class="tab2"></span><span class="commentary">% Controlador</span></div>
+    <div><span class="tab2"></span>A=cArDrone_UnderActuated(A);</div>
+    <br>
+    <div><span class="tab2"></span><span class="commentary">% Envia os sinais de controle</span></div>
+    <div><span class="tab2"></span>A.rSendControlSignals;</div>
+    <div><span class="tab"></span><span class="blue-command">end</span></div>
+    <br>
+    <div><span class="tab"></span><span class="blue-command">if</span> toc(tp) > 0.3</div>
+    <div><span class="tab2"></span>tp = tic;</div>
+    <div><span class="tab2"></span>A.mCADplot;</div>
+    <div><span class="tab2"></span>drawnow</div>
+    <div><span class="tab"></span><span class="blue-command">end</span></div>
+    <div><span class="blue-command">end</span></div>
+</div>
