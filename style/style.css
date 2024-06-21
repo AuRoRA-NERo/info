@@ -152,6 +152,13 @@ h3 {
     margin-top: 25px;
 }
 
+h4 {
+    font-weight: 500;
+    font-size: 26px;
+    color: var(--h3);
+    margin-top: 35px;
+}
+
 p {
     font-weight: 400;
     font-size: 17px;
@@ -267,7 +274,6 @@ footer {
 .nav-link-active {
     color: var(--nav-link-active);
     font-weight: 500;
-
 }
 
 /* Dropdown button in nav bar */
@@ -322,8 +328,8 @@ footer {
 
 /* Search bar */
 .search {
-    background-color: var(--search-background);
-    color: var(--search-text);
+    background-color: var(--search-focus);
+    color: var(--search-focus-text);
     margin-inline: 40px;
     width: 40%;
     padding: 1em;
@@ -370,18 +376,6 @@ input:focus {
     border: transparent;
     background-color: var(--search-focus);
     color: var(--search-focus-text);
-}
-
-#result {
-    display: none;
-    position: fixed;
-    background-color: white;
-    margin: 15px 0 0 40px;
-    width: 480px;
-    border-radius: 5px;
-    border: 2px solid rgb(118, 118, 118);
-    padding: 5px 20px 5px 20px;
-    text-align: justify;
 }
 
 /* Estilo para destacar os resultados da pesquisa */
