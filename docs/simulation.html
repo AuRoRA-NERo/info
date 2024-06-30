@@ -50,13 +50,13 @@
 
 <div class="code" id="code2">
     <button class="copy-btn" type="button" onclick="copy_data(code2)"><i class="fa fa-copy"></i></button>
-    <div>close <span class="purple-command">all</span></div>
+    <div>close <span class="purple">all</span></div>
     <div>clear</div>
     <div>clc</div>
     <br>
-    <div><span class="blue-command">try</span></div>
+    <div><span class="blue">try</span></div>
     <div> <span class="tab"></span> fclose(instrfindall);</div>
-    <div><span class="blue-command">end</span></div>
+    <div><span class="blue">end</span></div>
     <br>
     <div><span class="commentary">% Rotina para buscar pasta raiz</span></div>
     <div>PastaAtual = pwd;</div>
@@ -70,7 +70,7 @@
     <div>J = JoyControl;</div>
     <br>
     <div><span class="commentary">% Arquivo Texto</span></div>
-    <div>ArqTxt = fopen('<span class="purple-command">DadosExp.txt</span>');</div>
+    <div>ArqTxt = fopen('<span class="purple">DadosExp.txt</span>');</div>
 </div>
 
 <p>
@@ -94,7 +94,7 @@
 
 <p>O vetor de referência X é definido pelas seguintes variáveis: </p>
 
-<img src="./src/vetor.png" alt="Vetor de referência X" class="image">
+<img src="./src/vetor.png" alt="Vetor de referência X" class="large-image">
 
 <p>O vetor é originalmente composto por 12 variáveis, no entanto, para determinar apenas a posição do drone
     no espaço 3D, é preciso apenas das três primeiras variáveis (1:3) que são as que correspondem a x, y, e
@@ -109,17 +109,17 @@
     <div>J = JoyControl;</div>
     <br>
     <div><span class="commentary">% Arquivo Texto</span></div>
-    <div>ArqTxt = fopen('<span class="purple-command">DadosExp.txt</span>');</div>
+    <div>ArqTxt = fopen('<span class="purple">DadosExp.txt</span>');</div>
     <br>
     <div><span class="commentary">%=========================================================================</span>
     </div>
     <div>figure(1) </div>
-    <div>axis([<span class="purple-command">-3 3 -3 3 0 3</span>]) </div>
-    <div>grid <span class="purple-command">on </span></div>
+    <div>axis([<span class="purple">-3 3 -3 3 0 3</span>]) </div>
+    <div>grid <span class="purple">on </span></div>
     <div>A.mCADplot </div>
     <div>drawnow </div>
     <div>pause(1) </div>
-    <div>disp('<span class="purple-command">Start..........</span>') </div>
+    <div>disp('<span class="purple">Start..........</span>') </div>
 </div>
 
 <p>
@@ -156,8 +156,8 @@
 
 <div class="code" id="code5">
     <button class="copy-btn" type="button" onclick="copy_data(code5)"><i class="fa fa-copy"></i></button>
-    <div> <span class="blue-command">while</span> toc(t) < tmax </div>
-    <div><span class="tab"></span><span class="blue-command"> if </span> toc(tc) > 1/30
+    <div> <span class="blue">while</span> toc(t) < tmax </div>
+    <div><span class="tab"></span><span class="blue"> if </span> toc(tc) > 1/30
     </div>
     <div><span class="tab2"></span>tc = tic; </div>
     <br>
@@ -186,8 +186,8 @@
 
 <div class="code" id="code6">
     <button class="copy-btn" type="button" onclick="copy_data(code6)"><i class="fa fa-copy"></i></button>
-    <div> <span class="blue-command">while</span> toc(t) < tmax </div>
-    <div><span class="tab"></span><span class="blue-command"> if </span> toc(tc) > 1/30 </div>
+    <div> <span class="blue">while</span> toc(t) < tmax </div>
+    <div><span class="tab"></span><span class="blue"> if </span> toc(tc) > 1/30 </div>
     <div><span class="tab2"></span>tc = tic; </div>
     <br>
     <div> <span class="tab2"></span>A.pPos.Xd(3) = 2;</div>
@@ -198,7 +198,7 @@
     <div><span class="tab2"></span>A.rSendControlSignals;</div>
     <br>
     <div><span class="tab2"></span>XX = [XX [A.pPos.Xd; A.pPos.X; A.pSC.Ud; toc(t)]];</div>
-    <div><span class="tab1"></span> <span class="blue-command">end</span></div>
+    <div><span class="tab1"></span> <span class="blue">end</span></div>
 </div>
 
 <p>
@@ -229,22 +229,22 @@
 
 <div class="code" id="code8">
     <button class="copy-btn" type="button" onclick="copy_data(code8)"><i class="fa fa-copy"></i></button>
-    <div><span class="blue-command"> while </span> toc(t) < tmax </div>
-    <div><span class="tab"></span> <span class="blue-command">if</span> toc(tc) > 1/30</div>
+    <div><span class="blue"> while </span> toc(t) < tmax </div>
+    <div><span class="tab"></span> <span class="blue">if</span> toc(tc) > 1/30</div>
     <div><span class="tab2"></span>tc = tic;</div>
-    <div><span class="tab2"></span> <span class="blue-command">if </span>toc(t) > 3*tmax/4</div>
+    <div><span class="tab2"></span> <span class="blue">if </span>toc(t) > 3*tmax/4</div>
     <div><span class="tab3"></span>A.pPos.Xd(1) = 0;</div>
     <div><span class="tab3"></span>A.pPos.Xd(3) = 1;</div>
     <br>
-    <div><span class="tab2"></span> <span class="blue-command">elseif </span>toc(t) > 2*tmax/4</div>
+    <div><span class="tab2"></span> <span class="blue">elseif </span>toc(t) > 2*tmax/4</div>
     <div><span class="tab3"></span>A.pPos.Xd(3) = 2;</div>
     <br>
-    <div><span class="tab2"></span><span class="blue-command">elseif</span> toc(t) > tmax/4</div>
+    <div><span class="tab2"></span><span class="blue">elseif</span> toc(t) > tmax/4</div>
     <div><span class="tab3"></span>A.pPos.Xd(3) = 0.5;</div>
     <br>
-    <div><span class="tab2"></span><span class="blue-command">else</span></div>
+    <div><span class="tab2"></span><span class="blue">else</span></div>
     <div><span class="tab3"></span>A.pPos.Xd(3) = 0.2;</div>
-    <div><span class="tab2"></span><span class="blue-command">end</span></div>
+    <div><span class="tab2"></span><span class="blue">end</span></div>
     <br>
     <div><span class="tab2"></span><span class="commentary">% Controlador</span></div>
     <div><span class="tab2"></span>A.rGetSensorData</div>
@@ -256,13 +256,13 @@
     <div><span class="tab2"></span>A.rSendControlSignals;</div>
     <br>
     <div><span class="tab2"></span>XX = [XX [A.pPos.Xd; A.pPos.X; A.pSC.Ud; toc(t)]];</div>
-    <div><span class="tab"></span><span class="blue-command">end</span></div>
-    <div><span class="tab"></span><span class="blue-command">if</span> toc(tp) > 0.3</div>
+    <div><span class="tab"></span><span class="blue">end</span></div>
+    <div><span class="tab"></span><span class="blue">if</span> toc(tp) > 0.3</div>
     <div><span class="tab2"></span>tp = tic;</div>
     <div><span class="tab2"></span>A.mCADplot;</div>
     <div><span class="tab2"></span>drawnow</div>
-    <div><span class="tab"></span><span class="blue-command">end</span></div>
-    <div><span class="blue-command">end</span></div>
+    <div><span class="tab"></span><span class="blue">end</span></div>
+    <div><span class="blue">end</span></div>
 </div>
 
 <p>

@@ -25,8 +25,8 @@
 <p>Implemente o loop da simulação indicando a posição desejada que o ArDrone deve alcançar e indique qual controlador ele deve usar. Por fim, plote o robô novamente.</p>
 <div class="code" id="code2">
     <button class="copy-btn" type="button" onclick="copy_data(code2)"><i class="fa fa-copy"></i></button>
-    <div><span class="blue-command">while</span> toc(t) < tmax</div>
-    <div><span class="tab"></span><span class="blue-command">if</span> toc(tc) > 1/30</div>
+    <div><span class="blue">while</span> toc(t) < tmax</div>
+    <div><span class="tab"></span><span class="blue">if</span> toc(tc) > 1/30</div>
     <div><span class="tab2"></span>tc = tic;</div>
     <br>
     <div><span class="tab2"></span><span class="commentary">% Indica a posição desejada do drone</span></div>
@@ -40,12 +40,12 @@
     <br>
     <div><span class="tab2"></span><span class="commentary">% Envia os sinais de controle</span></div>
     <div><span class="tab2"></span>A.rSendControlSignals;</div>
-    <div><span class="tab"></span><span class="blue-command">end</span></div>
+    <div><span class="tab"></span><span class="blue">end</span></div>
     <br>
-    <div><span class="tab"></span><span class="blue-command">if</span> toc(tp) > 0.3</div>
+    <div><span class="tab"></span><span class="blue">if</span> toc(tp) > 0.3</div>
     <div><span class="tab2"></span>tp = tic;</div>
     <div><span class="tab2"></span>A.mCADplot;</div>
     <div><span class="tab2"></span>drawnow</div>
-    <div><span class="tab"></span><span class="blue-command">end</span></div>
-    <div><span class="blue-command">end</span></div>
+    <div><span class="tab"></span><span class="blue">end</span></div>
+    <div><span class="blue">end</span></div>
 </div>
