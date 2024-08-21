@@ -324,16 +324,16 @@ footer {
     font-size: 14px;
 }
 
-/* Style of principal panel */
-.principal-panel {
+/* Style of main panel */
+.main-panel {
     right: 0;
     top: 0;
     padding-top: 15px;
     margin-left: 32%;
 }
 
-/* Header of principal panel */
-.header-principal-panel {
+/* Header of main panel */
+.header-main-panel {
     background-color: var(--header-p-panel-background);
     position: fixed;
     top: 0;
@@ -384,14 +384,6 @@ input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-results-button,
 input[type="search"]::-webkit-search-results-decoration {
     display: none;
-}
-
-/* Estilo para destacar os resultados da pesquisa */
-.search-result-item {
-    margin: 20px 0 20px 0;
-    cursor: pointer;
-    color: var(--p);
-    text-decoration: underline;
 }
 
 /* Extern redirecting links */

@@ -1,4 +1,4 @@
-//Função que alterna entre os modos dark e ligth
+//Function to switch between light and dark mode
 document.addEventListener("DOMContentLoaded", function () {
     const root = document.documentElement;
     const toggle = document.getElementById("toggle");
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-//Função que copia o código
+//Function to copy code
 function copy_data(containerid) {
     var range = document.createRange();
     range.selectNode(containerid); //changed here
@@ -45,23 +45,23 @@ function copy_data(containerid) {
     $('#GFG').text("Div hides after 1 second.");
 }
 
-//Função que expande as sub listas no menu de navegação
+//Funcion to expand sub nav bar
 function expand_list(button) {
-    var subNavBar = button.nextElementSibling; // Pega a ul irmã do botão clicado
-    var icon = button.querySelector('i'); // Pega o ícone dentro do botão
+    var subNavBar = button.nextElementSibling; 
+    var icon = button.querySelector('i');
 
     if (subNavBar.style.display === 'none' || subNavBar.style.display === '') {
-        subNavBar.style.display = 'block'; // Mostra a lista
-        icon.classList.remove('fa-caret-down'); // Remove a classe do ícone para baixo
-        icon.classList.add('fa-caret-up'); // Adiciona a classe do ícone para cima
+        subNavBar.style.display = 'block';
+        icon.classList.remove('fa-caret-down');
+        icon.classList.add('fa-caret-up');
     } else {
-        subNavBar.style.display = 'none'; // Oculta a lista
-        icon.classList.remove('fa-caret-up'); // Remove a classe do ícone para cima
-        icon.classList.add('fa-caret-down'); // Adiciona a classe do ícone para baixo
+        subNavBar.style.display = 'none';
+        icon.classList.remove('fa-caret-up');
+        icon.classList.add('fa-caret-down');
     }
 }
 
-//Função para carregar o conteudo de acordo com a barra de navegação
+//Function to load page contents
 document.addEventListener("DOMContentLoaded", function () {
     // Index of pages and their contents
     var pages = {
