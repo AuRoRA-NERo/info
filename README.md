@@ -8,4 +8,4 @@ Welcome to the official repository for the **AuRoRA** Documentation Site. This r
 To access the AuRoRA documentation, visit our [site](https://aurora-nero.github.io/info/).
 
 ## To contribute
-Visit [this](https://drive.google.com/file/d/1AsTN_60yi3pf4a4J35-FMeakFy-b2OqI/view?usp=sharing) for more information.
+Visit [this](https://drive.google.com/file/d/1gwD-rTV7tpb_1CGHfU0hodQGim58M_bU/view?usp=sharing) for more information.

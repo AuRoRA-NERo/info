@@ -325,6 +325,7 @@ footer {
     text-decoration: none;
 }
 
+/* Credits text */
 .credits {
     color: var(--copyright);
     margin-top: 5px;
