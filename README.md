@@ -1,5 +1,5 @@
 # AuRoRA Documentation Site
-Welcome to the official repository for the **AuRoRA** Documentation Site. This repository hosts all the documentation for the AuRoRA framework, including installation guides, tutorials and more.
+Welcome to the official repository for the **AuRoRA** Documentation Site. This repository hosts all the user documentation for the AuRoRA framework, including installation guides, tutorials and more.
 
 ## Introduction
 **AuRoRA** is a UAV simulation framework designed for robotics learning and control strategy development. It enables experimentation and performance evaluation in tasks such as positioning, trajectory planning, tracking, and robot cooperation. The documentation provides all the necessary information to help users understand, install, and effectively use AuRoRA.
